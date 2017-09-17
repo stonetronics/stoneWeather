@@ -207,6 +207,33 @@ DIN A3, landscape with location and doc. field</description>
 <text x="1.27" y="6.35" size="1.27" layer="51">AMS1117</text>
 <text x="1.27" y="8.89" size="1.27" layer="25">&gt;NAME</text>
 </package>
+<package name="GY21-HTU21">
+<smd name="P$1" x="-3.81" y="6.985" dx="3.81" dy="1.27" layer="1" rot="R90"/>
+<smd name="P$2" x="-1.27" y="8.255" dx="3.81" dy="1.27" layer="1" rot="R90"/>
+<smd name="P$3" x="1.27" y="6.985" dx="3.81" dy="1.27" layer="1" rot="R90"/>
+<smd name="P$4" x="3.81" y="8.255" dx="3.81" dy="1.27" layer="1" rot="R90"/>
+<wire x1="-5.08" y1="6.35" x2="0" y2="6.35" width="0.127" layer="51"/>
+<wire x1="5.08" y1="6.35" x2="5.08" y2="8.89" width="0.127" layer="51"/>
+<wire x1="-5.08" y1="6.35" x2="-5.08" y2="8.89" width="0.127" layer="51"/>
+<wire x1="-5.08" y1="8.89" x2="0" y2="8.89" width="0.127" layer="51"/>
+<wire x1="0" y1="8.89" x2="2.54" y2="8.89" width="0.127" layer="51"/>
+<wire x1="2.54" y1="8.89" x2="5.08" y2="8.89" width="0.127" layer="51"/>
+<wire x1="0" y1="6.35" x2="2.54" y2="6.35" width="0.127" layer="51"/>
+<circle x="-3.81" y="7.62" radius="0.635" width="0.127" layer="51"/>
+<circle x="-1.27" y="7.62" radius="0.635" width="0.127" layer="51"/>
+<circle x="1.27" y="7.62" radius="0.635" width="0.127" layer="51"/>
+<circle x="3.81" y="7.62" radius="0.635" width="0.127" layer="51"/>
+<rectangle x1="-5.08" y1="6.35" x2="-2.54" y2="8.89" layer="51"/>
+<wire x1="2.54" y1="6.35" x2="5.08" y2="6.35" width="0.127" layer="51"/>
+<wire x1="0" y1="8.89" x2="0" y2="6.35" width="0.127" layer="51"/>
+<wire x1="2.54" y1="8.89" x2="2.54" y2="6.35" width="0.127" layer="51"/>
+<wire x1="-7.62" y1="-10.16" x2="8.38" y2="-10.16" width="0.127" layer="21"/>
+<wire x1="8.38" y1="-10.16" x2="8.38" y2="10.84" width="0.127" layer="21"/>
+<wire x1="8.38" y1="10.84" x2="-7.62" y2="10.84" width="0.127" layer="21"/>
+<wire x1="-7.62" y1="10.84" x2="-7.62" y2="-10.16" width="0.127" layer="21"/>
+<text x="-2.54" y="-8.89" size="1.27" layer="21">GY21-HTU21</text>
+<text x="-1.27" y="11.43" size="1.27" layer="25">&gt;NAME</text>
+</package>
 </packages>
 <symbols>
 <symbol name="ESP8266">
@@ -277,6 +304,18 @@ ISP</text>
 <wire x1="7.62" y1="-5.08" x2="-7.62" y2="-5.08" width="0.254" layer="94"/>
 <text x="-3.81" y="2.54" size="1.27" layer="94">AMS1117</text>
 <text x="1.016" y="5.588" size="1.27" layer="95">&gt;NAME</text>
+</symbol>
+<symbol name="I2C_BASIC">
+<pin name="GND" x="-12.7" y="-7.62" visible="pin" length="middle"/>
+<pin name="SCL" x="-12.7" y="-2.54" visible="pin" length="middle"/>
+<pin name="SDA" x="-12.7" y="2.54" visible="pin" length="middle"/>
+<pin name="VCC" x="-12.7" y="7.62" visible="pin" length="middle"/>
+<wire x1="-7.62" y1="-10.16" x2="-7.62" y2="10.16" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="10.16" x2="7.62" y2="10.16" width="0.254" layer="94"/>
+<wire x1="7.62" y1="10.16" x2="7.62" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-10.16" x2="-7.62" y2="-10.16" width="0.254" layer="94"/>
+<text x="-0.508" y="11.176" size="1.27" layer="95">&gt;NAME</text>
+<text x="0" y="-12.7" size="1.27" layer="96">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -369,6 +408,24 @@ ISP</text>
 <connect gate="G$1" pin="GND" pad="GND"/>
 <connect gate="G$1" pin="IN" pad="IN"/>
 <connect gate="G$1" pin="OUT" pad="OUT"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="GY21_HTU21" prefix="SOB" uservalue="yes">
+<gates>
+<gate name="G$1" symbol="I2C_BASIC" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="GY21-HTU21">
+<connects>
+<connect gate="G$1" pin="GND" pad="P$3"/>
+<connect gate="G$1" pin="SCL" pad="P$2"/>
+<connect gate="G$1" pin="SDA" pad="P$1"/>
+<connect gate="G$1" pin="VCC" pad="P$4"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -701,6 +758,12 @@ ISP</text>
 <text x="-2.54" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
 <pin name="GNDA" x="0" y="2.54" visible="off" length="short" direction="sup" rot="R270"/>
 </symbol>
+<symbol name="+5V">
+<wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
+<text x="-2.54" y="-5.08" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="+5V" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="+3V3" prefix="+3V3">
@@ -733,6 +796,19 @@ ISP</text>
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
 <gate name="1" symbol="GNDA" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="+5V" prefix="P+">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
+<gates>
+<gate name="1" symbol="+5V" x="0" y="0"/>
 </gates>
 <devices>
 <device name="">
@@ -8208,6 +8284,12 @@ Source: www.kingbright.com</description>
 <part name="C12" library="rcl" deviceset="C-EU" device="C0805"/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 <part name="+3V9" library="supply1" deviceset="+3V3" device=""/>
+<part name="SOB2" library="stoneTronics" deviceset="GY21_HTU21" device=""/>
+<part name="P+1" library="supply1" deviceset="+5V" device=""/>
+<part name="P+2" library="supply1" deviceset="+5V" device=""/>
+<part name="GND11" library="supply1" deviceset="GND" device=""/>
+<part name="C13" library="rcl" deviceset="C-EU" device="C0805"/>
+<part name="GND12" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8261,6 +8343,12 @@ Source: www.kingbright.com</description>
 <instance part="C12" gate="G$1" x="91.44" y="55.88"/>
 <instance part="GND10" gate="1" x="91.44" y="43.18"/>
 <instance part="+3V9" gate="G$1" x="91.44" y="66.04"/>
+<instance part="SOB2" gate="G$1" x="279.4" y="162.56"/>
+<instance part="P+1" gate="1" x="58.42" y="66.04"/>
+<instance part="P+2" gate="1" x="236.22" y="170.18" rot="R90"/>
+<instance part="GND11" gate="1" x="254" y="154.94" rot="R270"/>
+<instance part="C13" gate="G$1" x="243.84" y="165.1"/>
+<instance part="GND12" gate="1" x="243.84" y="154.94"/>
 </instances>
 <busses>
 </busses>
@@ -8359,6 +8447,16 @@ Source: www.kingbright.com</description>
 <junction x="76.2" y="48.26"/>
 <junction x="91.44" y="48.26"/>
 <pinref part="GND10" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="SOB2" gate="G$1" pin="GND"/>
+<pinref part="GND11" gate="1" pin="GND"/>
+<wire x1="256.54" y1="154.94" x2="266.7" y2="154.94" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C13" gate="G$1" pin="2"/>
+<pinref part="GND12" gate="1" pin="GND"/>
+<wire x1="243.84" y1="157.48" x2="243.84" y2="160.02" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PB3(MOSI)" class="0">
@@ -8612,6 +8710,11 @@ Source: www.kingbright.com</description>
 <wire x1="266.7" y1="104.14" x2="259.08" y2="104.14" width="0.1524" layer="91"/>
 <label x="256.54" y="104.14" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="SOB2" gate="G$1" pin="SDA"/>
+<wire x1="266.7" y1="165.1" x2="259.08" y2="165.1" width="0.1524" layer="91"/>
+<label x="256.54" y="165.1" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="SCL" class="0">
 <segment>
@@ -8628,6 +8731,11 @@ Source: www.kingbright.com</description>
 <wire x1="266.7" y1="99.06" x2="259.08" y2="99.06" width="0.1524" layer="91"/>
 <label x="256.54" y="99.06" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="SOB2" gate="G$1" pin="SCL"/>
+<wire x1="266.7" y1="160.02" x2="259.08" y2="160.02" width="0.1524" layer="91"/>
+<label x="256.54" y="160.02" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="PD3" class="0">
 <segment>
@@ -8641,7 +8749,7 @@ Source: www.kingbright.com</description>
 <label x="147.32" y="132.08" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$2" class="0">
+<net name="+5V" class="0">
 <segment>
 <pinref part="5V" gate="G$1" pin="P$1"/>
 <pinref part="IC2" gate="G$1" pin="IN"/>
@@ -8658,6 +8766,17 @@ Source: www.kingbright.com</description>
 <junction x="48.26" y="60.96"/>
 <junction x="53.34" y="60.96"/>
 <junction x="58.42" y="60.96"/>
+<pinref part="P+1" gate="1" pin="+5V"/>
+<wire x1="58.42" y1="60.96" x2="58.42" y2="63.5" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SOB2" gate="G$1" pin="VCC"/>
+<pinref part="P+2" gate="1" pin="+5V"/>
+<wire x1="238.76" y1="170.18" x2="243.84" y2="170.18" width="0.1524" layer="91"/>
+<pinref part="C13" gate="G$1" pin="1"/>
+<wire x1="243.84" y1="170.18" x2="266.7" y2="170.18" width="0.1524" layer="91"/>
+<wire x1="243.84" y1="167.64" x2="243.84" y2="170.18" width="0.1524" layer="91"/>
+<junction x="243.84" y="170.18"/>
 </segment>
 </net>
 </nets>
